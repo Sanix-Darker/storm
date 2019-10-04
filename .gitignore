@@ -3,3 +3,5 @@
 *__pycache__
 *.history
 *.min.*
+config.txt
+vscode

@@ -5,25 +5,15 @@
         <meta charset="UTF-8">
         <title>Storm</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="./static/css/style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <style>
-        #search_box{
-            width: 90%;
-            background: 0;
-            color: white;
-            padding: 15px;
-            border: 0;
-        }
-    </style>
-    <body>
+    <body onload="loadContainer()">
         <!-- partial:index.partial.html -->
         <!-- video credit: https://coverr.co/videos/Down%20by%20the%20River -->
-
-        <h1>SToRM</h1>
+        <h1 id="title">SToRM</h1>
         <div class="player">
-            <video class="player-video" src="http://192.168.1.102:8080/video.MP4"></video>
+            <video class="player-video" src="" id="videoPlayer"></video>
             <div class="player-controls">
                 <div class="progress">
                     <div class="filled-progress"></div>
@@ -35,6 +25,7 @@
                             <path d="M3 2l10 6-10 6z"></path>
                         </svg>
                     </button>
+                    <span id="thetitle"></span>
                 </div>
                 <div class="sliders">
                     <input type="range" name="volume" class="player-slider" min="0" max="1" step="0.05" value="1">
@@ -47,13 +38,14 @@
         </div>
         <div class="playList">
             <input type="text" placeholder="Recherchez une video/film" id="search_box" onkeyup="Filter()"/>
-            <ul id="myUL">
-                <li>Loading Video list....</li>
-            </ul><hr>
+            <div id="container">
+                <ul id="myUL">
+                    <li>Loading Video list....</li>
+                </ul><hr>
+            </div>
+
         </div>
         <!-- partial -->
-        <script src="assets/js/script.js"></script>
-
+        <script src="./static/js/script.js"></script>
     </body>
-
 </html>

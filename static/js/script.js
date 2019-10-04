@@ -77,6 +77,42 @@ progress.addEventListener('mousedown', () => mousedown = true);
 progress.addEventListener('mouseup', () => mousedown = false);
 
 
+
+let xhttp;
+if (window.XMLHttpRequest) {
+  // code for modern browsers
+  xhttp = new XMLHttpRequest();
+} else {
+  // code for IE6, IE5
+  xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+const loadContainer = () => {
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      const videos = JSON.parse(this.responseText)["videos"]
+      let video_list = "<ul id='myUL'>";
+      for (var i = 0; i < (videos.length); i++){
+          const link = videos[i];
+          const link_splitted = link.split("/");
+          const title = link_splitted[link_splitted.length - 1];
+          video_list += "<li onclick='start_video(\""+title+"\", \""+link+"\")' class='video_id' id='"+link+"' title='"+title+"'>"+title.substring(0, 35);+"</li>";
+      }
+      video_list += "</ul>";
+      document.getElementById("container").innerHTML = video_list;
+    }
+  };
+  xhttp.open("GET", "/getall", true);
+  xhttp.send();
+}
+
+const start_video = (title, link) => {
+  document.getElementById("videoPlayer").src = link;
+  document.getElementById("thetitle").innerHTML = title.substring(0, 80);
+  console.log("Starting... "+title);
+  togglePlay()
+}
+
 const Filter = () => {
   // Declare variables
   var input, filter, ul, li, a, i, txtValue;
