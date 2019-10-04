@@ -32,10 +32,38 @@ Start Storm by hitting:
 
 ```shell
 python main.py
+
+# NOTE : Your Storm server is now running, you can check it on  http://127.0.0.1:1113/
+# if you want to open this port in a Local Network just hit his in plus : sudo ufw allow 1113
+# Of Course this is a Linux solution
+
 ```
+
+Then share your IP address with others
 
 ## Screenshots
 
+<table>
+    <tr>
+        <td>
+            <img src="./images/img1.jpg">
+        </td>
+        <td>
+            <img src="./images/img2.jpg">
+        </td>
+        <td>
+            <img src="./images/img3.jpg">
+        </td>
+        <td>
+            <img src="./images/img4.jpg">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <img src="./images/img0.jpg">
+        </td>
+    </tr>
+</table>
 
 ## Author
 
