@@ -1,30 +1,14 @@
 # coding: utf-8
 from flask import Flask, jsonify, request, render_template
 # importing the requests library
-import requests
-import base64
-import configparser as ConfigParser
 import json
 from os import listdir, system, path as ospath
 from threading import Thread
-import magic
 from pathlib import Path
-
-# Configs parameters configParser.get('your-config', 'path1')
-configParser = ConfigParser.RawConfigParser()
-configFilePath = r'config.txt'
-configParser.read(configFilePath)
-
-# Secrets parameters
-Host = configParser.get('storm-config', 'Host')
-Password = configParser.get('storm-config', 'Password')
 
 # Let's link some dir
 print("Linking dirs....")
 system("ln -s '/home/darker/Downloads/Telegram Desktop/' /home/darker/ACTUALC/vagrant/PYTHON/STORM/static/videos/")
-
-# api-endpoint
-URL = Host
 
 app = Flask(__name__)
 app.config['Secret'] = "Secret"
@@ -34,15 +18,6 @@ def index():
     return render_template("index.html")
 
 def check_is_video(file_path):
-    # if ospath.isfile(file_path):
-    #     mime = magic.Magic(mime=True)
-    #     filename = mime.from_file(file_path)
-    #     if filename.find('video') != -1:
-    #         return True
-    #     else:
-    #         return False
-    # else:
-    #     return False
     for ext in [".mp4", ".flv", ".mkv", ".avi", ".3gp"]:
         if ext in file_path or ext.upper() in file_path:
             return True
@@ -85,30 +60,6 @@ def index2():
     # Let's allow all Origin requests
     response.headers.add('Access-Control-Allow-Origin', '*') # To prevent Cors issues
     return response
-
-
-# @app.route('/logs', methods=['GET']) # To prevent Cors issues
-# def index3():
-#     try:
-#         # Sent in GET requests
-#         container = request.args.get('container')
-#         # sending get request and saving the response as response object 
-#         r = requests.get(url = URL+"/getlogs?container="+str(container)+"&password="+Password) 
-#         jsonMessage = json.loads(str(r.content).replace("\\n", "").replace("b'", "").replace("'", ""))
-
-#         # Build the response
-#         response = jsonify({ 'status':'success', 'message': _base64.DECODE(jsonMessage['message'])[-50000:] })
-#     except:
-#         response = jsonify({ 'status':'error', 'message': 'Something went Wrong!' })
-
-#     # Let's allow all Origin requests
-#     response.headers.add('Access-Control-Allow-Origin', '*') # To prevent Cors issues
-#     return response
-
-
-# def ltunnel_process():
-#     print("Starting ltunnel...")
-#     os.system("lt --subdomain storm --port 1113")
 
 
 if __name__ == "__main__":
