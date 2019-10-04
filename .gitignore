@@ -4,4 +4,4 @@
 *.history
 *.min.*
 config.txt
-vscode
+.vscode
