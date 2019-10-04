@@ -1,4 +1,4 @@
-<img src="favicon.ico">
+<img src="./images/logo.png"/>
 
 # SToRM
 
