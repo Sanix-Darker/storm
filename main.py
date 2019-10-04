@@ -18,11 +18,11 @@ def index():
     return render_template("index.html")
 
 def check_is_video(file_path):
-    for ext in [".mp4", ".flv", ".mkv", ".avi", ".3gp"]:
+    file_path = file_path.replace(" ", "")
+    for ext in [".mp4", ".flv", ".mkv", ".avi", ".3gp", "720p", "480p", "1080p"]:
         if ext in file_path or ext.upper() in file_path:
             return True
-        else:
-            return False
+    return False
 
 @app.route('/getall', methods=['GET']) # To prevent Cors issues
 def index2():
