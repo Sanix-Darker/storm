@@ -6,9 +6,25 @@ from os import listdir, system, path as ospath
 from threading import Thread
 from pathlib import Path
 
+
+import configparser as ConfigParser
+
+# Configs parameters configParser.get('your-config', 'path1')
+configParser = ConfigParser.RawConfigParser()   
+configFilePath = r'config.txt'
+configParser.read(configFilePath)
+
+# Secrets parameters
+VideoDir = configParser.get('storm-config', 'VideoDir')
+
+
 # Let's link some dir
-print("Linking dirs....")
-system("ln -s '/home/darker/Downloads/Telegram Desktop/' /home/darker/ACTUALC/vagrant/PYTHON/STORM/static/videos/")
+with open("path_dirs.json", "r") as frr:
+    json_ = json.loads(frr.read())
+    for dir_ in json_:
+        print("Linking dirs : "+dir_["path_dir"]+"...")
+        system("ln -s '"+dir_["path_dir"]+"' '"+VideoDir+"'")
+
 
 app = Flask(__name__)
 app.config['Secret'] = "Secret"

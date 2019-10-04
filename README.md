@@ -13,11 +13,25 @@ This might not be obvious at first glance, but sometimes we are in a public envi
 - Python (3.x is recommended)
 - flask
 - pathlib
+- configparser
 
 ## How it's work
 
-A local server is loaded in your computer with all directory you have series, films or movies, you just need to configurated them in `path_dirs.json` and it's done.
-
+A local server is loaded in your computer with all directory you have series, films or movies,
+you just need to configurated them in `path_dirs.json` and it's done.
+```json
+[
+    {
+        "path_dir":"/home/path/to/serie1/"
+    },
+    {
+        "path_dir":"/home/path/to/serie2/"
+    },
+    {
+        "path_dir":"/home/path/to/anime_serie/"
+    },
+]
+```
 
 ## Install
 
